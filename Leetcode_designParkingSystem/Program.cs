@@ -18,7 +18,7 @@
             mediumCar = medium;
             smallCar = small;
         }
-
+        //method for the alocation of parking space
         public bool AddCar(int carType)
         {
             if (carType == 1 && bigCar > 0)
