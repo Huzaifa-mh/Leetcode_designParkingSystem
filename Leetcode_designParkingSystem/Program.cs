@@ -7,6 +7,15 @@
         Console.WriteLine(obj.AddCar(2)); //medium
         Console.WriteLine(obj.AddCar(3)); //small
         Console.WriteLine(obj.AddCar(4)); //big
+
+        MinStack minStack = new MinStack();
+        minStack.Push(-2);
+        minStack.Push(0);
+        minStack.Push(-3);
+        Console.WriteLine(minStack.GetMin()); // return -3
+        minStack.Pop();
+        Console.WriteLine(minStack.Top());    // return 0
+        Console.WriteLine(minStack.GetMin()); // return -2
     }
     public class ParkingSystem
     {
@@ -40,6 +49,45 @@
             {
                 return false;
             }
+        }
+    }
+
+    public class MinStack
+    {
+
+        Stack<int> mainStack;
+        Stack<int> minStack;
+
+        public MinStack()
+        {
+            mainStack = new Stack<int>();
+            minStack = new Stack<int>();
+        }
+
+        public void Push(int val)
+        {
+            mainStack.Push(val);
+            if (minStack.Count == 0 || val <= minStack.Peek())
+            {
+                minStack.Push(val);
+            }
+        }
+
+        public void Pop()
+        {
+            mainStack.Pop();
+        }
+
+        public int Top()
+        {
+            int peek = mainStack.Peek();
+            return peek;
+        }
+
+        public int GetMin()
+        {
+            int minValue = minStack.Pop();
+            return minValue;
         }
     }
 
