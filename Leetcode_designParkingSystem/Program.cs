@@ -75,7 +75,15 @@
 
         public void Pop()
         {
-            mainStack.Pop();
+            if (mainStack.Count == 0)
+            {
+                return;
+            }
+            int popped = mainStack.Pop();
+            if (popped == minStack.Peek())
+            {
+                minStack.Pop();
+            }
         }
 
         public int Top()
@@ -86,14 +94,20 @@
 
         public int GetMin()
         {
-            int minValue = minStack.Pop();
-            return minValue;
+            // if(minStack.Count > 0){
+            // int minValue = minStack.Pop();
+            // return minValue;
+            // }
+            // else{
+            //     Console.WriteLine("Stack underflow");
+            //     return null;
+            return minStack.Peek();
         }
     }
+}
 
     /**
      * Your ParkingSystem object will be instantiated and called as such:
      * ParkingSystem obj = new ParkingSystem(big, medium, small);
      * bool param_1 = obj.AddCar(carType);
      */
-}
